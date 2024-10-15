@@ -1,1 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 
+#difficulty {
+    margin-bottom: 20px;
+}
+
+#board {
+    margin: 0 auto;
+}
