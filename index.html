@@ -1,34 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo de Xadrez</title>
-    <!-- Chessboard.js CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard-1.0.0.min.css" />
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Carregar Chessboard.js do CDN -->
+    <script src="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
 </head>
 <body>
     <h1>Jogo de Xadrez</h1>
+
     <div id="difficulty">
-        <label for="difficulty-select">Selecione a Dificuldade:</label>
-        <select id="difficulty-select">
-            <option value="facil">Fácil</option>
-            <option value="medio">Médio</option>
-            <option value="dificil">Difícil</option>
+        <select id="difficulty-level">
+            <option value="easy">Fácil</option>
+            <option value="medium">Médio</option>
+            <option value="hard">Difícil</option>
         </select>
-        <button onclick="startGame()">Iniciar Jogo</button>
+        <button id="start-button">Iniciar Jogo</button>
     </div>
 
     <div id="board"></div>
 
-    <!-- Chess.js (lógica do xadrez) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
-
-    <!-- Chessboard.js (tabuleiro de xadrez interativo) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard-1.0.0.min.js"></script>
-
-    <!-- Script principal do jogo -->
     <script src="script.js"></script>
 </body>
 </html>
