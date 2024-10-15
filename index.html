@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo de Xadrez</title>
+    <!-- Chessboard.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard-1.0.0.min.css" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,10 +20,15 @@
         <button onclick="startGame()">Iniciar Jogo</button>
     </div>
 
-    <div id="board" style="width: 400px"></div>
+    <div id="board"></div>
 
+    <!-- Chess.js (lógica do xadrez) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+    <!-- Chessboard.js (tabuleiro de xadrez interativo) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard-1.0.0.min.js"></script>
+
+    <!-- Script principal do jogo -->
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,21 +1,25 @@
 let board = null;
 let game = new Chess();
-let difficulty = "facil"; // Valor inicial para dificuldade
+let difficulty = "facil"; // Valor inicial para a dificuldade
 
 function startGame() {
     difficulty = document.getElementById("difficulty-select").value;
+    
+    // Inicializar o tabuleiro de xadrez
     board = Chessboard('board', {
-        draggable: true,
-        position: 'start',
-        onDrop: handleMove
+        draggable: true,   // Permite arrastar as peças
+        position: 'start', // Posição inicial padrão
+        onDrop: handleMove // Função para lidar com os movimentos
     });
+    
+    // Reiniciar o estado do jogo
     game.reset();
 }
 
 function handleMove(source, target) {
     // Tentar realizar o movimento
     const move = game.move({ from: source, to: target });
-    if (move === null) return 'snapback'; // Movimento inválido
+    if (move === null) return 'snapback'; // Se o movimento for inválido, retornar peça ao lugar
 
     // Movimenta o bot com base na dificuldade
     window.setTimeout(makeBotMove, 250);
@@ -30,13 +34,14 @@ function makeBotMove() {
         // Estratégia fácil: Escolhe um movimento aleatório
         move = randomMove(moves);
     } else if (difficulty === "medio") {
-        // Estratégia média: Avalia movimentos, mas sem profundidade
+        // Estratégia média: Avalia movimentos simples
         move = basicBestMove(moves);
     } else if (difficulty === "dificil") {
         // Estratégia difícil: Movimento com minimax ou outro algoritmo de busca
-        move = bestMoveMinimax(game, 2); // Profundidade 2 (você pode aumentar)
+        move = bestMoveMinimax(game, 2); // Profundidade 2
     }
 
+    // Realizar o movimento do bot e atualizar o tabuleiro
     game.move(move);
     board.position(game.fen());
 }
@@ -47,7 +52,6 @@ function randomMove(moves) {
 }
 
 function basicBestMove(moves) {
-    // Escolha simples do "melhor" movimento (por material)
     let bestMove = null;
     let bestValue = -9999;
 
