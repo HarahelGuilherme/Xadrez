@@ -2,31 +2,43 @@ $(document).ready(function () {
     var board = null;
     var game = new Chess();
     var $status = $('#status');
+    var engine = null;
 
-    // IA Stockfish via Worker
-    var stockfishURL = "https://cdnjs.cloudflare.com/ajax/libs/stockfish.js/10.0.2/stockfish.js";
-    var engine = new Worker(stockfishURL);
+    // --- SOLUÇÃO PARA O ERRO DE SECURITY / WORKER ---
+    const stockfishURL = "https://cdnjs.cloudflare.com/ajax/libs/stockfish.js/10.0.2/stockfish.js";
 
-    // 1. Funções de Lógica
+    fetch(stockfishURL)
+        .then(response => response.text())
+        .then(code => {
+            const blob = new Blob([code], { type: 'application/javascript' });
+            engine = new Worker(URL.createObjectURL(blob));
+            console.log("IA Stockfish carregada com sucesso.");
+            updateStatus();
+        })
+        .catch(err => {
+            $status.html("Erro ao carregar IA. Verifique sua conexão.");
+            console.error(err);
+        });
+
+    // --- LÓGICA DO JOGO ---
     function onDragStart(source, piece, position, orientation) {
         if (game.game_over()) return false;
-        // Só permite mover peças brancas
-        if (game.turn() === 'b') return false;
+        // Só permite mover brancas
         if (piece.search(/^b/) !== -1) return false;
     }
 
     function makeBestMove() {
-        if (game.game_over()) return;
+        if (!engine || game.game_over()) return;
 
-        var depth = $('#depth-level').val();
-        $status.html('IA pensando (Profundidade ' + depth + ')...');
+        const depth = $('#depth-level').val();
+        $status.html('IA está pensando...');
 
         engine.postMessage('position fen ' + game.fen());
         engine.postMessage('go depth ' + depth);
 
         engine.onmessage = function (event) {
             if (event.data.startsWith('bestmove')) {
-                var moveMsg = event.data.split(' ')[1];
+                const moveMsg = event.data.split(' ')[1];
                 game.move({
                     from: moveMsg.substring(0, 2),
                     to: moveMsg.substring(2, 4),
@@ -39,7 +51,7 @@ $(document).ready(function () {
     }
 
     function onDrop(source, target) {
-        var move = game.move({
+        const move = game.move({
             from: source,
             to: target,
             promotion: 'q'
@@ -52,13 +64,13 @@ $(document).ready(function () {
     }
 
     function updateStatus() {
-        var status = '';
-        var moveColor = (game.turn() === 'b') ? 'Pretas (IA)' : 'Brancas (Você)';
+        let status = '';
+        const moveColor = (game.turn() === 'b') ? 'Pretas (IA)' : 'Brancas (Você)';
 
         if (game.in_checkmate()) {
-            status = 'Fim de jogo: ' + moveColor + ' está em Xeque-mate.';
+            status = 'Fim de Jogo: ' + moveColor + ' sofreu Xeque-mate.';
         } else if (game.in_draw()) {
-            status = 'Fim de jogo: Empate.';
+            status = 'Fim de Jogo: Empate.';
         } else {
             status = 'Vez das ' + moveColor;
             if (game.in_check()) status += ' (Xeque!)';
@@ -66,7 +78,7 @@ $(document).ready(function () {
         $status.html(status);
     }
 
-    // 2. Configuração do Tabuleiro
+    // --- INICIALIZAÇÃO DO TABULEIRO ---
     var config = {
         draggable: true,
         position: 'start',
@@ -76,9 +88,7 @@ $(document).ready(function () {
     };
 
     board = Chessboard('myBoard', config);
-    updateStatus();
 
-    // 3. Botão Reiniciar
     $('#resetBtn').on('click', function() {
         game.reset();
         board.start();

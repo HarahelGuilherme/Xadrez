@@ -1,7 +1,7 @@
 body {
     background-color: #121212;
     color: white;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,31 +11,32 @@ body {
 
 #game-container {
     background: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.6);
     width: 450px;
     max-width: 95vw;
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
     color: #769656;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
 }
 
 #status-bar {
-    background: #262626;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+    background: #2a2a2a;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
     text-align: center;
-    border-left: 5px solid #769656;
+    font-size: 0.95rem;
+    border-left: 4px solid #769656;
 }
 
 #myBoard {
-    border: 2px solid #333;
+    border: 3px solid #333;
     border-radius: 4px;
 }
 
@@ -50,15 +51,14 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.9rem;
 }
 
 select {
     background: #333;
     color: white;
-    border: 1px solid #444;
-    padding: 5px;
-    border-radius: 3px;
+    border: 1px solid #555;
+    padding: 6px;
+    border-radius: 4px;
 }
 
 button {
@@ -66,12 +66,12 @@ button {
     color: white;
     border: none;
     padding: 12px;
-    border-radius: 5px;
+    border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
 button:hover {
-    background: #85ab5f;
+    background: #95bb72;
 }

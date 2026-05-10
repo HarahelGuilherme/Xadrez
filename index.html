@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Pro - IA Stockfish</title>
+    <title>Xadrez Pro - Stockfish</title>
     
     <!-- CSS do Tabuleiro -->
     <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
-    <!-- Seu CSS Personalizado -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -16,14 +15,14 @@
         <h1>Xadrez Profissional</h1>
         
         <div id="status-bar">
-            <span id="status">Carregando jogo...</span>
+            <span id="status">Iniciando motor de jogo...</span>
         </div>
 
         <div id="myBoard"></div>
 
         <div class="panel">
             <div class="control-group">
-                <label for="depth-level">Dificuldade (IA):</label>
+                <label>Dificuldade:</label>
                 <select id="depth-level">
                     <option value="8">Iniciante</option>
                     <option value="12" selected>Intermediário</option>
@@ -34,12 +33,12 @@
         </div>
     </div>
 
-    <!-- BIBLIOTECAS (Importante manter essa ordem) -->
+    <!-- BIBLIOTECAS (Ordem crítica para funcionamento) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <!-- Versão estável do Chess.js para evitar erro de "export" -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
     <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
     
-    <!-- SEU SCRIPT -->
     <script src="js/main.js"></script>
 </body>
 </html>
