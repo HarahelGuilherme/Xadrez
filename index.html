@@ -3,38 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xadrez Pro - Engine Stockfish</title>
+    <title>Chess Master Pro - IA Stockfish</title>
     
-    <!-- CSS do Tabuleiro -->
+    <!-- CSS do Tabuleiro (Chessboard.js) -->
     <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
-    
-    <style>
-        body { background: #2c3e50; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        #game-container { text-align: center; background: #34495e; padding: 20px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        #myBoard { width: 500px; margin: 20px auto; border: 5px solid #222; }
-        .controls { margin-top: 15px; }
-        button { padding: 10px 20px; cursor: pointer; background: #27ae60; border: none; color: white; font-weight: bold; border-radius: 5px; }
-        button:hover { background: #2ecc71; }
-        #status { margin-bottom: 10px; font-weight: bold; color: #f1c40f; }
-    </style>
+    <!-- Nosso Estilo Personalizado -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <div id="game-container">
         <h2>Xadrez Profissional</h2>
-        <div id="status">Sua vez (Brancas)</div>
+        
+        <div id="status-container">
+            <span id="status">Brancas jogam</span>
+        </div>
+
         <div id="myBoard"></div>
+
         <div class="controls">
-            <button onclick="location.reload()">Reiniciar Partida</button>
+            <button onclick="location.reload()">Nova Partida</button>
+            <div class="difficulty-container">
+                <label>Nível da IA:</label>
+                <select id="depth-level">
+                    <option value="8">Iniciante</option>
+                    <option value="12" selected>Intermediário</option>
+                    <option value="15">Mestre (Lento)</option>
+                </select>
+            </div>
         </div>
     </div>
 
-    <!-- Importando Bibliotecas Essenciais -->
+    <!-- Bibliotecas Necessárias -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
     <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
     
-    <!-- Nosso código de lógica -->
+    <!-- Lógica do Jogo -->
     <script src="js/main.js"></script>
 </body>
 </html>
