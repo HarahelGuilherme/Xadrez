@@ -3,43 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Master Pro - IA Stockfish</title>
+    <title>Chess Pro - IA Stockfish</title>
     
-    <!-- CSS do Tabuleiro (Chessboard.js) -->
+    <!-- CSS do Tabuleiro -->
     <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
-    <!-- Nosso Estilo Personalizado -->
+    <!-- Seu CSS Personalizado -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <div id="game-container">
-        <h2>Xadrez Profissional</h2>
+        <h1>Xadrez Profissional</h1>
         
-        <div id="status-container">
-            <span id="status">Brancas jogam</span>
+        <div id="status-bar">
+            <span id="status">Carregando jogo...</span>
         </div>
 
         <div id="myBoard"></div>
 
-        <div class="controls">
-            <button onclick="location.reload()">Nova Partida</button>
-            <div class="difficulty-container">
-                <label>Nível da IA:</label>
+        <div class="panel">
+            <div class="control-group">
+                <label for="depth-level">Dificuldade (IA):</label>
                 <select id="depth-level">
                     <option value="8">Iniciante</option>
                     <option value="12" selected>Intermediário</option>
-                    <option value="15">Mestre (Lento)</option>
+                    <option value="15">Mestre</option>
                 </select>
             </div>
+            <button id="resetBtn">Reiniciar Partida</button>
         </div>
     </div>
 
-    <!-- Bibliotecas Necessárias -->
+    <!-- BIBLIOTECAS (Importante manter essa ordem) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
     <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
     
-    <!-- Lógica do Jogo -->
+    <!-- SEU SCRIPT -->
     <script src="js/main.js"></script>
 </body>
 </html>

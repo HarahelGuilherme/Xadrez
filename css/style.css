@@ -1,7 +1,7 @@
 body {
     background-color: #121212;
-    color: #e0e0e0;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,67 +10,68 @@ body {
 }
 
 #game-container {
-    background-color: #1e1e1e;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    width: 450px;
+    max-width: 95vw;
+}
+
+h1 {
+    font-size: 1.5rem;
     text-align: center;
+    color: #769656;
+    margin-bottom: 20px;
 }
 
-h2 {
-    margin-top: 0;
-    color: #769656; /* Verde clássico de xadrez */
-    text-transform: uppercase;
-}
-
-#status-container {
-    background: #2a2a2a;
+#status-bar {
+    background: #262626;
     padding: 10px;
-    border-radius: 8px;
     margin-bottom: 15px;
-    border-left: 4px solid #769656;
+    border-radius: 5px;
+    text-align: center;
+    border-left: 5px solid #769656;
 }
 
 #myBoard {
-    width: 450px;
-    max-width: 90vw;
-    margin: 0 auto;
-    border: 4px solid #333;
+    border: 2px solid #333;
+    border-radius: 4px;
 }
 
-.controls {
+.panel {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.control-group {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-}
-
-button {
-    background-color: #769656;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background-color: #a3d160;
-}
-
-.difficulty-container {
-    font-size: 14px;
-    color: #bbb;
+    font-size: 0.9rem;
 }
 
 select {
     background: #333;
     color: white;
-    border: 1px solid #555;
+    border: 1px solid #444;
     padding: 5px;
-    border-radius: 4px;
+    border-radius: 3px;
+}
+
+button {
+    background: #769656;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #85ab5f;
 }
